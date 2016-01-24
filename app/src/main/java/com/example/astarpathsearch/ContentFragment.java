@@ -13,14 +13,12 @@ public class ContentFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-
     private String mParam1;
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
 
     public ContentFragment() {
-        // Required empty public constructor
     }
 
     public static ContentFragment newInstance(String param1, String param2) {
@@ -44,7 +42,10 @@ public class ContentFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_content, container, false);
+        View view = inflater.inflate(R.layout.fragment_content, container, false);
+        CustomSurfaceView mCustomSurfaceView = (CustomSurfaceView) view.findViewById(R.id.surfaceview);
+
+        return view;
     }
 
 

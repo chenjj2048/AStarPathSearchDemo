@@ -5,7 +5,7 @@
     tools:context=".ContentFragment">
 
     <com.example.astarpathsearch.CustomSurfaceView
-        android:id="@+id/customview"
+        android:id="@+id/surfaceview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
