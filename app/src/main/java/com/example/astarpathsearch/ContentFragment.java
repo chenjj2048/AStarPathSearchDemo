@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.example.astarpathsearch.model.GridModel;
 
 public class ContentFragment extends Fragment {
 
@@ -43,9 +46,20 @@ public class ContentFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_content, container, false);
-        CustomSurfaceView mCustomSurfaceView = (CustomSurfaceView) view.findViewById(R.id.surfaceview);
-
+        initGrid(view);
         return view;
+    }
+
+    private void initGrid(View view) {
+        GridModel gridModel = new GridModel(5, 3);
+        gridModel.setRandomObstacle(0.1);
+        gridModel.setStartPointRandom();
+        gridModel.setEndPointRandom();
+        gridModel.startAStartSearch(0);
+
+        TextView textView = (TextView) view.findViewById(R.id.textview);
+//        textView.setLineSpacing(0, 0.6f);
+        textView.setText(gridModel.toString());
     }
 
 

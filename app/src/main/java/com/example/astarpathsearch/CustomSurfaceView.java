@@ -4,8 +4,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.RectF;
-import android.support.annotation.IntRange;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -19,26 +17,25 @@ import com.example.astarpathsearch.model.GridModel;
  */
 public class CustomSurfaceView extends SurfaceView implements SurfaceHolder.Callback {
     private DrawThread mDrawThread;
-    private GridViewModel mGridViewModel;
+//    private GridViewModel mGridViewModel;
 
     public CustomSurfaceView(Context context) {
         super(context);
-        init();
+        initSurfaceView();
     }
 
     public CustomSurfaceView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
+        initSurfaceView();
     }
 
     public CustomSurfaceView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
+        initSurfaceView();
     }
 
-    private void init() {
-        SurfaceHolder mSurfaceHolder = this.getHolder();
-        mSurfaceHolder.addCallback(this);
+    private void initSurfaceView() {
+        this.getHolder().addCallback(this);
     }
 
     @Override
@@ -49,8 +46,8 @@ public class CustomSurfaceView extends SurfaceView implements SurfaceHolder.Call
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         initGrid();
-        mDrawThread = new DrawThread(holder);
-        mDrawThread.start();
+//        mDrawThread = new DrawThread(holder);
+//        mDrawThread.start();
     }
 
     @Override
@@ -63,8 +60,11 @@ public class CustomSurfaceView extends SurfaceView implements SurfaceHolder.Call
     }
 
     public void initGrid() {
-        mGridViewModel = new GridViewModel(10, 20);
-        mGridViewModel.setRandomValue(255);
+//        mGridViewModel = new GridViewModel(5, 5);
+//        mGridViewModel.setRandomValue(1);
+//        Iterator<PointModel> iterator=mGridViewModel.iterator();
+//        while (iterator.hasNext())
+//            Log.i("点集合",iterator.next().toString());
     }
 
     private class DrawThread extends Thread {
@@ -93,7 +93,7 @@ public class CustomSurfaceView extends SurfaceView implements SurfaceHolder.Call
                     canvas = holder.lockCanvas();
                     if (canvas != null) {
                         drawBackground(canvas);
-                        drawGrid(canvas, mGridViewModel);
+//                        drawGrid(canvas, mGridViewModel);
                         holder.unlockCanvasAndPost(canvas);
                     }
                     try {
@@ -110,11 +110,11 @@ public class CustomSurfaceView extends SurfaceView implements SurfaceHolder.Call
         }
 
         private void drawGrid(Canvas canvas, GridModel gridModel) {
-            for (int x = 0; x < gridModel.getXCounts(); x++)
-                for (int y = 0; y < gridModel.getYCounts(); y++) {
-                    mPointPaint.setColor(Color.argb(255, (x * y) % 256, 0, 0));
-                    canvas.drawRect(gridModel.getPointRect(x, y), mPointPaint);
-                }
+//            for (int x = 0; x < gridModel.getColumns(); x++)
+//                for (int y = 0; y < gridModel.getLines(); y++) {
+//                    mPointPaint.setColor(Color.argb(255, (x * y) % 256, 0, 0));
+//                    canvas.drawRect(gridModel.getPointRect(x, y), mPointPaint);
+//                }
         }
 
         public boolean onTouchEvent(MotionEvent event) {
@@ -124,30 +124,30 @@ public class CustomSurfaceView extends SurfaceView implements SurfaceHolder.Call
         }
     }
 
-    class GridViewModel extends GridModel {
-        private static final int MARGIN_X = 50;
-        private static final int MARGIN_Y = 50;
-        private static final int POINT_SIZE = 50;
-        private static final float GAP = POINT_SIZE * 0.1f;
-
-        public GridViewModel(int xCounts, int yCounts) {
-            super(xCounts, yCounts);
-        }
-
-        @Override
-        public RectF getSizeWithoutMargin() {
-            float width = getXCounts() * (GAP + POINT_SIZE) - GAP;
-            float height = getYCounts() * (GAP + POINT_SIZE) - GAP;
-            return new RectF(0, 0, width, height);
-        }
-
-        @Override
-        public RectF getPointRect(@IntRange(from = 0) int column, @IntRange(from = 0) int line) {
-            final float left = MARGIN_X + column * (GAP + POINT_SIZE);
-            final float top = MARGIN_Y + line * (GAP + POINT_SIZE);
-            return new RectF(left, top, left + POINT_SIZE, top + POINT_SIZE);
-        }
-
-
-    }
+//    class GridViewModel extends GridModel {
+//        private static final int MARGIN_X = 50;
+//        private static final int MARGIN_Y = 50;
+//        private static final int POINT_SIZE = 50;
+//        private static final float GAP = POINT_SIZE * 0.1f;
+//
+//        public GridViewModel(int xCounts, int yCounts) {
+//            super(xCounts, yCounts);
+//        }
+//
+//        @Override
+//        public RectF getSizeWithoutMargin() {
+//            float width = getColumns() * (GAP + POINT_SIZE) - GAP;
+//            float height = getLines() * (GAP + POINT_SIZE) - GAP;
+//            return new RectF(0, 0, width, height);
+//        }
+//
+//        @Override
+//        public RectF getPointRect(@IntRange(from = 0) int column, @IntRange(from = 0) int line) {
+//            final float left = MARGIN_X + column * (GAP + POINT_SIZE);
+//            final float top = MARGIN_Y + line * (GAP + POINT_SIZE);
+//            return new RectF(left, top, left + POINT_SIZE, top + POINT_SIZE);
+//        }
+//
+//
+//    }
 }
