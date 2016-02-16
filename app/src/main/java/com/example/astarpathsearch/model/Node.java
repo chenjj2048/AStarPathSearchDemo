@@ -1,22 +1,23 @@
 package com.example.astarpathsearch.model;
 
-import android.graphics.RectF;
+import com.example.astarpathsearch.model.PointType.PointTypes;
 
 /**
  * Created by 彩笔怪盗基德 on 2016/1/27.
  * https://github.com/chenjj2048
  */
-public abstract class Node {
+public class Node {
     public final int x;
     public final int y;
+    private int hash;
 
-    @PointType.PointSymbol
-    public int pointType;
+    @PointTypes
+    private int pointType;
 
-    public Node(int column, int line, @PointType.PointSymbol int pointType) {
+    public Node(int column, int line) {
         this.x = column;
         this.y = line;
-        this.pointType = pointType;
+        this.pointType = com.example.astarpathsearch.model.PointType.BLANK;
     }
 
     @Override
@@ -31,26 +32,23 @@ public abstract class Node {
 
     @Override
     public int hashCode() {
-        int result = x;
-        result = 31 * result + y;
-        return result;
+        return (hash != 0) ? hash : (hash = 31 * x + y);
     }
 
-    public abstract Node leftPoint();
-
-    public abstract Node rightPoint();
-
-    public abstract Node abovePoint();
-
-    public abstract Node belowPoint();
-
-    public void reset() {
-        pointType = PointType.BLANK;
+    @PointTypes
+    public int getPointType() {
+        return this.pointType;
     }
 
-    public interface PointInterface {
-        public double distance(Node pointModel);
+    public void setPointType(@PointTypes int pointType) {
+        this.pointType = pointType;
+    }
 
-        public RectF getPointRect(int column, int line);
+    @Override
+    public String toString() {
+        return "Node{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
     }
 }

@@ -1,13 +1,98 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="#ffffff"
+    android:padding="10dp"
     tools:context="com.example.astarpathfinding.DrawerFragment">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="drawer" />
+        android:id="@+id/tv_size_x"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="布局大小-横向" />
 
-</FrameLayout>
+    <SeekBar
+        android:id="@+id/seekbar_size_x"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_size_x" />
+
+    <TextView
+        android:id="@+id/tv_size_y"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seekbar_size_x"
+        android:text="布局大小-纵向" />
+
+    <SeekBar
+        android:id="@+id/seekbar_size_y"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_size_y" />
+
+    <TextView
+        android:id="@+id/tv_grid_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seekbar_size_y"
+        android:text="网格大小" />
+
+    <SeekBar
+        android:id="@+id/seekbar_grid_size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_grid_size" />
+
+    <TextView
+        android:id="@+id/tv_astar_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seekbar_grid_size"
+        android:text="优先路径最短" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/seekbar_grid_size"
+        android:text="优先搜索方向" />
+
+    <TextView
+        android:id="@+id/tv_astar_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_astar_mode" />
+
+    <SeekBar
+        android:id="@+id/seekbar_astar_weight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_astar_weight" />
+
+    <TextView
+        android:id="@+id/tv_barriers_ratio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seekbar_astar_weight"
+        android:text="障碍比例" />
+
+    <SeekBar
+        android:id="@+id/seekbar_obstacle_ratio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_barriers_ratio" />
+
+    <SeekBar
+        android:id="@+id/seekbar_alpha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/seekbar_alpha"
+        android:text="界面透明度" />
+</RelativeLayout>

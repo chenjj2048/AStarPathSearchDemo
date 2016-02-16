@@ -14,30 +14,15 @@ public class PointType {
     public static final int OBSTACLE = 1;
     public static final int START_POINT = 2;
     public static final int END_POINT = 3;
+    public static final int ROUTE_FOUND = 4;
+    public static final int ROUTE_VISITED = 5;  //非起点至终点路线上的访问过的点，与AStarNode.hasVisited属性不同
 
-    public static char getSymbol(@PointSymbol int type) {
-        char result;
-        switch (type) {
-            case BLANK:
-                result = '0';
-                break;
-            case OBSTACLE:
-                result = '1';
-                break;
-            case START_POINT:
-                result = 'S';
-                break;
-            case END_POINT:
-                result = 'E';
-                break;
-            default:
-                throw new RuntimeException("木有这个类型");
-        }
-        return result;
+    @IntDef({BLANK, OBSTACLE, START_POINT, END_POINT, ROUTE_FOUND, ROUTE_VISITED})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface PointTypes {
     }
 
-    @IntDef({BLANK, OBSTACLE, START_POINT, END_POINT})
-    @Retention(RetentionPolicy.SOURCE)
-    public @interface PointSymbol {
+    public interface IPointColor {
+        int getColor();
     }
 }
