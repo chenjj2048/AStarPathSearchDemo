@@ -28,17 +28,17 @@ public class DrawerFragment extends Fragment implements SeekBar.OnSeekBarChangeL
     @Bind(R.id.tv_astar_weight)
     TextView mTextViewWeight;
     @Bind(R.id.seekbar_size_x)
-    SeekBar mSeekBarXCount;
+    CustomSeekBar mSeekBarXCount;
     @Bind(R.id.seekbar_size_y)
-    SeekBar mSeekBarYCount;
+    CustomSeekBar mSeekBarYCount;
     @Bind(R.id.seekbar_grid_size)
-    SeekBar mSeekBarGridSize;
+    CustomSeekBar mSeekBarGridSize;
     @Bind(R.id.seekbar_astar_weight)
-    SeekBar mSeekBarAStarWeight;
+    CustomSeekBar mSeekBarAStarWeight;
     @Bind(R.id.seekbar_obstacle_ratio)
-    SeekBar mSeekBarObstacleRatio;
+    CustomSeekBar mSeekBarObstacleRatio;
     @Bind(R.id.seekbar_alpha)
-    SeekBar mSeekBarAlpha;
+    CustomSeekBar mSeekBarAlpha;
 
     private GridConfig mGridConfig;
 

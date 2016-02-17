@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="布局大小-横向" />
 
-    <SeekBar
+    <com.example.astarpathsearch.view.CustomSeekBar
         android:id="@+id/seekbar_size_x"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
         android:layout_below="@id/seekbar_size_x"
         android:text="布局大小-纵向" />
 
-    <SeekBar
+    <com.example.astarpathsearch.view.CustomSeekBar
         android:id="@+id/seekbar_size_y"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
         android:layout_below="@id/seekbar_size_y"
         android:text="网格大小" />
 
-    <SeekBar
+    <com.example.astarpathsearch.view.CustomSeekBar
         android:id="@+id/seekbar_grid_size"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_astar_mode" />
 
-    <SeekBar
+    <com.example.astarpathsearch.view.CustomSeekBar
         android:id="@+id/seekbar_astar_weight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -77,13 +77,13 @@
         android:layout_below="@id/seekbar_astar_weight"
         android:text="障碍比例" />
 
-    <SeekBar
+    <com.example.astarpathsearch.view.CustomSeekBar
         android:id="@+id/seekbar_obstacle_ratio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_barriers_ratio" />
 
-    <SeekBar
+    <com.example.astarpathsearch.view.CustomSeekBar
         android:id="@+id/seekbar_alpha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
